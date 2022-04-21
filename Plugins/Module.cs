@@ -27,6 +27,7 @@ namespace Plugins
 
                 if (context.MessageName.ToLower() == "associate" || context.MessageName.ToLower() == "disassociate")
                 {
+                    var test = 0;
                     var target = (EntityReference)context.InputParameters["Target"];
                     var relatedEntities = context.InputParameters["RelatedEntities"] as EntityReferenceCollection;
                     var testId = relatedEntities[0].Id;
