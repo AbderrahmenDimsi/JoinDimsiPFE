@@ -12,7 +12,8 @@
         public enum Etat_Civile
         {
             Celibataire = 0,
-            Marié = 1
+            Marié = 1,
+            Divorcé = 2
         }
 
         public enum Experience
