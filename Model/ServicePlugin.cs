@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Model
 {
-  public  class Serviceplugin
+    public class Serviceplugin
     {
         public static bool IsValidEmail(string email)
         {
@@ -23,7 +20,7 @@ namespace Model
             if (string.IsNullOrWhiteSpace(telephone))
                 return false;
             Regex regex = new Regex(@"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{2}[-\s\.]?[0-9]{4,6}$",
-            RegexOptions.CultureInvariant | RegexOptions.Singleline) ;
+            RegexOptions.CultureInvariant | RegexOptions.Singleline);
             bool IsValidTelephone = regex.IsMatch(telephone.ToString());
             return IsValidTelephone;
         }

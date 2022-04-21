@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace Model.Definitions
@@ -37,9 +35,6 @@ namespace Model.Definitions
 
     }
 }
-     
-
-      
 
 
 
@@ -61,4 +56,6 @@ namespace Model.Definitions
 
 
 
- 
+
+
+

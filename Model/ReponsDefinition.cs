@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace Model.Definitions
@@ -16,17 +14,18 @@ namespace Model.Definitions
 
 
         //definiion des champs
-        public static  class Columns {
+        public static class Columns
+        {
 
-        public const string Id = "dim_reponseid";
-        public const string Reponse = "dim_reponse";
-        public const string Validation = "dim_validation";
+            public const string Id = "dim_reponseid";
+            public const string Reponse = "dim_reponse";
+            public const string Validation = "dim_validation";
 
-        public const string ReponseQuetion = "dim_question_reponseid";
+            public const string ReponseQuetion = "dim_question_reponseid";
+        }
     }
-    }
 
 
 
-    }
+}
 

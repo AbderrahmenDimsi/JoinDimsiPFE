@@ -1,15 +1,9 @@
 ﻿using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Query;
+using Model;
 using Model.Definitions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.ServiceModel.Description;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
 
 namespace Plugins
 {
@@ -18,7 +12,7 @@ namespace Plugins
         public void Execute(IServiceProvider serviceProvider)
         {
             IPluginExecutionContext context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
-            
+
 
             //Trace
             ITracingService tracingService = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
@@ -33,13 +27,10 @@ namespace Plugins
 
                 if (context.MessageName.ToLower() == "associate" || context.MessageName.ToLower() == "disassociate")
                 {
-
-
-                    
-                        var target = (EntityReference)context.InputParameters["Target"]; 
+                    var target = (EntityReference)context.InputParameters["Target"];
                     var relatedEntities = context.InputParameters["RelatedEntities"] as EntityReferenceCollection;
                     var testId = relatedEntities[0].Id;
-              if (target.LogicalName == "dim_test")
+                    if (target.LogicalName == "dim_test")
                     {
                         var Test = service.Retrieve(TestDefinition.EntityName, target.Id, new ColumnSet(TestDefinition.column.Module));
 
@@ -58,8 +49,8 @@ namespace Plugins
 
                         foreach (var q in questionsDistinct)
                         {
-                            if (questions.Count()>1)
-                            ch = ch+ " ,"+ q.FormattedValues[QuestionDefinition.Columns.Module] ;
+                            if (questions.Count() > 1)
+                                ch = ch + " ," + q.FormattedValues[QuestionDefinition.Columns.Module];
                             else ch = ch + q.FormattedValues[QuestionDefinition.Columns.Module];
                         }
 
@@ -67,7 +58,7 @@ namespace Plugins
 
                         service.Update(Test);
                     }
-              if (target.LogicalName == "dim_question")
+                    if (target.LogicalName == "dim_question")
                     {
 
                         var Test = service.Retrieve(TestDefinition.EntityName, testId, new ColumnSet(TestDefinition.column.Module));
@@ -93,23 +84,23 @@ namespace Plugins
                         }
 
                         Test[TestDefinition.column.Module] = ch;
-                      
+
                         service.Update(Test);
                     }
                 }
 
 
-                }
+            }
             catch (Exception ex)
             {
 
             }
-            }
-
-
-            }
-
         }
+
+
+    }
+
+}
 
 
 

@@ -24,7 +24,7 @@ namespace Plugins
                 Entity preImageCandidat = (Entity)context.PreEntityImages["preimage"];
                 var nom = "";
                 var prenom = "";
-             
+
 
 
                 if (candidat.Contains(CandidatDefinition.Columns.Nom))
@@ -40,7 +40,7 @@ namespace Plugins
 
 
                 candidat[CandidatDefinition.Columns.Nom_Complet] = nom + " " + prenom;
-              
+
             }
 
 

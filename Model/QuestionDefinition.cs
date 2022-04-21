@@ -1,8 +1,4 @@
-﻿using Microsoft.Xrm.Sdk.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Model
 {
@@ -22,7 +18,7 @@ namespace Model
             public const string Module = "dim_module";
             public const string Niveau_difficulte = "dim_niveau_difficulte";
 
-                public const string QuestionReponse = "dim_question_reponseid";
+            public const string QuestionReponse = "dim_question_reponseid";
             public const string QuestionTest = "dim_dim_question_dim_test";
 
         }

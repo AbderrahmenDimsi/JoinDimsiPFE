@@ -3,10 +3,7 @@ using Microsoft.Xrm.Sdk.Query;
 using Model;
 using Model.Definitions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Plugins
 {
@@ -141,8 +138,8 @@ namespace Plugins
                             moyenne = N / questions.Count();
                         }
                         else
-                            moyenne = 0 ; 
-                      
+                            moyenne = 0;
+
 
                         Test[TestDefinition.column.Niveau_difficulte_moyenne] = moyenne;
 
@@ -167,7 +164,7 @@ namespace Plugins
             }
 
         }
-        }
+    }
 }
-         
-         
+
+

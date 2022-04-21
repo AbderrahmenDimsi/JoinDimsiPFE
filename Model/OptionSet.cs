@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-
-namespace Model.Definitions
+﻿namespace Model.Definitions
 {
-   internal class OptionSet
+    internal class OptionSet
     {
         //definition candidat.civilité 
         public enum civilite
@@ -22,23 +17,23 @@ namespace Model.Definitions
 
         public enum Experience
         {
-            Stagiaire = 914320000, 
-           deuxans = 914320000 ,
+            Stagiaire = 914320000,
+            deuxans = 914320000,
             cinqans = 914320003,
             Plusde5ans = 914320002
         }
 
-        public enum  Categorie
+        public enum Categorie
         {
             Ingénierie = 914320001,
-            Junior = 914320002 , 
+            Junior = 914320002,
             Senior = 914320003
         }
         public enum Niveau_Dificullte
         {
-            Niveau1 = 914320000 , 
-                Niveau2 = 914320001 , 
-                Niveau3 = 914320002 
+            Niveau1 = 914320000,
+            Niveau2 = 914320001,
+            Niveau3 = 914320002
         }
 
 
@@ -50,19 +45,20 @@ namespace Model.Definitions
         }
 
         public enum Module
-        {C = 914320000 , 
-           logique = 914320001 , 
-           algorithme = 914320002 , 
-           Html = 914320003 , 
-           CSS = 914320004 , 
-           JS  = 914320005 , 
-           CRM = 914320006 
+        {
+            C = 914320000,
+            logique = 914320001,
+            algorithme = 914320002,
+            Html = 914320003,
+            CSS = 914320004,
+            JS = 914320005,
+            CRM = 914320006
 
         }
 
         public enum Valiadtion
         {
-            Vrai = 0 , 
+            Vrai = 0,
             Faux = 1
         }
 

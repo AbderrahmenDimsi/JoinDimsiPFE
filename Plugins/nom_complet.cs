@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xrm.Sdk;
 using Model.Definitions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Plugins
 {
@@ -25,11 +21,11 @@ namespace Plugins
                 Entity candidat = (Entity)context.InputParameters["Target"];
 
                 if (candidat.Contains(CandidatDefinition.Columns.Nom) && candidat.Contains(CandidatDefinition.Columns.prenom))
-                    {
+                {
                     var nom = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.Nom);
                     var prenom = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.prenom);
-                    candidat[CandidatDefinition.Columns.Nom_Complet] = nom +" "+prenom;
-                       }
+                    candidat[CandidatDefinition.Columns.Nom_Complet] = nom + " " + prenom;
+                }
 
                 if (candidat.Contains(CandidatDefinition.Columns.email))
                 {
@@ -43,16 +39,16 @@ namespace Plugins
                 if (candidat.Contains(CandidatDefinition.Columns.Telephone))
                 {
                     var telephone = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.Telephone);
-                        var isvalidTelephone = Model.Serviceplugin.IsValidTelephone(telephone);
-                        if (!isvalidTelephone)
-                        {
-                            throw new InvalidPluginExecutionException("Le telephone n'est pas valide");
-                        }
+                    var isvalidTelephone = Model.Serviceplugin.IsValidTelephone(telephone);
+                    if (!isvalidTelephone)
+                    {
+                        throw new InvalidPluginExecutionException("Le telephone n'est pas valide");
                     }
                 }
-
-
             }
+
+
         }
     }
+}
 
