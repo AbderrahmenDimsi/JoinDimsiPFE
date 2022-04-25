@@ -45,6 +45,8 @@ namespace Plugins
 
                         string ch = "";
                         var questions = service.RetrieveMultiple(query).Entities.ToList();
+                        //lister les modules des questions 
+                        List<QuestionDefinition.Columns.Module> list = new List<QuestionDefinition.Columns.Module>();
 
                         var questionsDistinct = questions.GroupBy(x => x.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Module)).Select(y => y.First()).ToList();
 
