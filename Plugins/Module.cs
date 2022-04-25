@@ -3,6 +3,7 @@ using Microsoft.Xrm.Sdk.Query;
 using Model;
 using Model.Definitions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Plugins
@@ -45,9 +46,13 @@ namespace Plugins
 
                         string ch = "";
                         var questions = service.RetrieveMultiple(query).Entities.ToList();
-                        //lister les modules des questions 
-                        List<QuestionDefinition.Columns.Module> list = new List<QuestionDefinition.Columns.Module>();
 
+                        //lister les modules des questions 
+                        List<Entity> mod = new List<Entity>();
+                        foreach(var q in questions)
+                        {
+                         mod[q] = q.FormattedValues[QuestionDefinition.Columns.Module]; 
+                        }
                         var questionsDistinct = questions.GroupBy(x => x.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Module)).Select(y => y.First()).ToList();
 
                         foreach (var q in questionsDistinct)
