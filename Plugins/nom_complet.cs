@@ -29,16 +29,16 @@ namespace Plugins
 
                 if (candidat.Contains(CandidatDefinition.Columns.email))
                 {
-                    var email = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.email);
+                    var email = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.courrier);
                     var Isvalid = Model.Serviceplugin.IsValidEmail(email);
                     if (!Isvalid)
                     {
                         throw new InvalidPluginExecutionException("L'email n'est pas valide");
                     }
                 }
-                if (candidat.Contains(CandidatDefinition.Columns.Telephone))
+                if (candidat.Contains(CandidatDefinition.Columns.numero))
                 {
-                    var telephone = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.Telephone);
+                    var telephone = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.numero);
                     var isvalidTelephone = Model.Serviceplugin.IsValidTelephone(telephone);
                     if (!isvalidTelephone)
                     {
