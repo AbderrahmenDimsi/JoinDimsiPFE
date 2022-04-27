@@ -31,6 +31,8 @@ namespace Model.Definitions
             public const string email = "dim_email";
             public const string ResultatTest = "dim_resultattest";
             public const string statuscode = "statuscode ";
+            public const string courrier = "dim_courrier";
+            public const string numero = "dim_numro_telephone";
         }
 
     }

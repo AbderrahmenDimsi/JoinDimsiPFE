@@ -201,6 +201,7 @@
     <Compile Include="Nom_CompletUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="nom_complet.cs" />
+    <Compile Include="ResultatTest.cs" />
     <Compile Include="VerificationEmail.cs" />
   </ItemGroup>
   <ItemGroup>
