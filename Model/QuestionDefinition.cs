@@ -12,7 +12,7 @@ namespace Model
         public static class Columns
         {
 
-            public const string Id = "dim_questionid";
+            public const string Id = "dim_questionid"; 
             public const string nom = "dim_name";
             public const string Enonce = "dim_enonce";
             public const string Module = "dim_module";

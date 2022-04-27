@@ -38,10 +38,10 @@ namespace Plugins
                         var Test = service.Retrieve(TestDefinition.EntityName, target.Id, new ColumnSet(TestDefinition.column.Module));
 
                         var query = new QueryExpression(QuestionDefinition.EntityName);
-                        query.ColumnSet.AddColumns("dim_questionid", "dim_name", "createdon", QuestionDefinition.Columns.Module);
-                        var query_dim_dim_question_dim_test = query.AddLink("dim_dim_question_dim_test", "dim_questionid", "dim_questionid");
-                        var ab = query_dim_dim_question_dim_test.AddLink("dim_test", "dim_testid", "dim_testid");
-                        ab.LinkCriteria.AddCondition("dim_testid", ConditionOperator.Equal, Test.Id);
+                        query.ColumnSet.AddColumns(QuestionDefinition.Columns.Id,QuestionDefinition.Columns.Enonce, QuestionDefinition.Columns.Module);
+                        var query_dim_dim_question_dim_test = query.AddLink(QuestionDefinition.Columns.QuestionTest,QuestionDefinition.Columns.Id, QuestionDefinition.Columns.Id);
+                        var ab = query_dim_dim_question_dim_test.AddLink(TestDefinition.EntityName, TestDefinition.column.Id, TestDefinition.column.Id);
+                        ab.LinkCriteria.AddCondition(TestDefinition.column.Id, ConditionOperator.Equal, Test.Id);
 
 
 
@@ -84,22 +84,38 @@ namespace Plugins
 
 
                         var query = new QueryExpression(QuestionDefinition.EntityName);
-                        query.ColumnSet.AddColumns(QuestionDefinition.Columns.Id, QuestionDefinition.Columns.nom, QuestionDefinition.Columns.Module);
-                        query.AddOrder(QuestionDefinition.Columns.nom, OrderType.Ascending);
-                        var queryQuestionTest = query.AddLink(QuestionDefinition.Columns.QuestionTest, QuestionDefinition.Columns.Id, QuestionDefinition.Columns.Id);
-                        var aa = queryQuestionTest.AddLink(TestDefinition.column.TestQuestion, TestDefinition.column.Id, TestDefinition.column.Id);
-                        aa.LinkCriteria.AddCondition(TestDefinition.column.Id, ConditionOperator.Equal, Test.Id);
+                        query.ColumnSet.AddColumns(QuestionDefinition.Columns.Id, QuestionDefinition.Columns.Enonce, QuestionDefinition.Columns.Module);
+                        var query_dim_dim_question_dim_test = query.AddLink(QuestionDefinition.Columns.QuestionTest, QuestionDefinition.Columns.Id, QuestionDefinition.Columns.Id);
+                        var ab = query_dim_dim_question_dim_test.AddLink(TestDefinition.EntityName, TestDefinition.column.Id, TestDefinition.column.Id);
+                        ab.LinkCriteria.AddCondition(TestDefinition.column.Id, ConditionOperator.Equal, Test.Id);
+
 
                         string ch = "";
                         var questions = service.RetrieveMultiple(query).Entities.ToList();
 
-                        var questionsDistinct = questions.GroupBy(x => x.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Module)).Select(y => y.First()).ToList();
+                        var nums = new List<string>();
+                        List<string> nn = new List<string>();
 
-                        foreach (var q in questionsDistinct)
+
+                        foreach (var q in questions)
+                        {
+                            nums.Add(q.FormattedValues[QuestionDefinition.Columns.Module]);
+
+                        }
+
+
+                        var m = nums.Distinct().Select(s => Tuple.Create(s, nums.Count(s2 => s2 == s))).ToList();
+
+
+
+                        // var questionsDistinct = questions.GroupBy(x => x.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Module)).Select(y => y.First()).ToList();
+
+                        foreach (var mm in m)
                         {
                             if (questions.Count() > 1)
-                                ch = ch + " ," + q.FormattedValues[QuestionDefinition.Columns.Module];
-                            else ch = ch + q.FormattedValues[QuestionDefinition.Columns.Module];
+                                ch = ch + "  " + mm;
+                            else ch = ch + mm;
+
                         }
 
                         Test[TestDefinition.column.Module] = ch;
