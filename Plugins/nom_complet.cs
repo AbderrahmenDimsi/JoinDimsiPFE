@@ -27,7 +27,7 @@ namespace Plugins
                     candidat[CandidatDefinition.Columns.Nom_Complet] = nom + " " + prenom;
                 }
 
-                if (candidat.Contains(CandidatDefinition.Columns.email))
+                if (candidat.Contains(CandidatDefinition.Columns.courrier))
                 {
                     var email = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.courrier);
                     var Isvalid = Model.Serviceplugin.IsValidEmail(email);

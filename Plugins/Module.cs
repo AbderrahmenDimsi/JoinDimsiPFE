@@ -170,13 +170,13 @@ namespace Plugins
                                 var niveau = Q.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Niveau_difficulte).Value;
 
                                 if (niveau == 914320000)
-                                    N = N + 1;
+                                    N = N + 10;
 
                                 else if (niveau == 914320001)
-                                    N = N + 2;
+                                    N = N + 20;
 
                                 else
-                                    N = N + 3;
+                                    N = N + 30;
 
                             }
 
