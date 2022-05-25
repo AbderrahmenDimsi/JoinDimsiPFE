@@ -41,6 +41,27 @@ namespace Plugins
 
                 candidat[CandidatDefinition.Columns.Nom_Complet] = nom + " " + prenom;
 
+
+
+                if (candidat.Contains(CandidatDefinition.Columns.courrier))
+                {
+                    var email = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.courrier);
+                    var Isvalid = Model.Serviceplugin.IsValidEmail(email);
+                    if (!Isvalid)
+                    {
+                        throw new InvalidPluginExecutionException("L'email n'est pas valide");
+                    }
+                }
+                if (candidat.Contains(CandidatDefinition.Columns.numero))
+                {
+                    var telephone = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.numero);
+                    var isvalidTelephone = Model.Serviceplugin.IsValidTelephone(telephone);
+                    if (!isvalidTelephone)
+                    {
+                        throw new InvalidPluginExecutionException("Le telephone n'est pas valide");
+                    }
+                }
+
             }
 
 

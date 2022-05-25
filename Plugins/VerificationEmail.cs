@@ -26,7 +26,7 @@ namespace Plugins
                 Entity candidat = (Entity)context.InputParameters["Target"];
                 if (candidat.Contains(CandidatDefinition.Columns.email))
                 {
-                    var email = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.courrierS);
+                    var email = candidat.GetAttributeValue<string>(CandidatDefinition.Columns.courrier);
                     var Isvalid = Model.Serviceplugin.IsValidEmail(email);
 
 

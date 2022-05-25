@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CandidatDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CandidatureDefinition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OptionSet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuestionDefinition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReponsDefinition.cs" />

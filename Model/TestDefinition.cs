@@ -14,8 +14,10 @@
             public const string Titre = "dim_titre";
             public const string Categorie = "dim_categorie";
             public const string Module = "dim_module";
+            public const string Distincte = "dim_module_distinct";
             public const string Niveau_difficulte_moyenne = "dim_niveau_difficulte_moyenne";
-
+            public const string dureetext = "dim_dureetext";
+            public const string dureeInt = "dim_dureeint";
             public const string TestQuestion = "dim_dim_question_dim_test";
 
         }

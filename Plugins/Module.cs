@@ -44,7 +44,7 @@ namespace Plugins
                         ab.LinkCriteria.AddCondition(TestDefinition.column.Id, ConditionOperator.Equal, Test.Id);
 
 
-
+                        string x = "";
                         string ch = "";
                         var questions = service.RetrieveMultiple(query).Entities.ToList();
                         var nums = new List<string>();
@@ -53,12 +53,14 @@ namespace Plugins
                      
                         foreach (var q in questions)
                         {
+                            x = x + " " + q.FormattedValues[QuestionDefinition.Columns.Module];
+                           
                             nums.Add(q.FormattedValues[QuestionDefinition.Columns.Module]);
                           
                         }
 
                         
-                       var m= nums.Distinct().Select(s => Tuple.Create(s, nums.Count(s2 => s2==s))).ToList();
+                       var m= nums.Distinct().Select(s => Tuple.Create( nums.Count(s2 => s2==s),s)).ToList();
                  
                         
 
@@ -66,13 +68,10 @@ namespace Plugins
 
                         foreach (var mm in m)
                         {
-                            if (questions.Count() > 1)
-                                ch = ch + "  " + mm;
-                           else ch = ch + mm;
-                         
+                                ch = ch + "/" + mm;                         
                         }
 
-                      
+                        Test[TestDefinition.column.Distincte] = x; 
                         Test[TestDefinition.column.Module] = ch;
 
                         service.Update(Test);
@@ -89,7 +88,7 @@ namespace Plugins
                         var ab = query_dim_dim_question_dim_test.AddLink(TestDefinition.EntityName, TestDefinition.column.Id, TestDefinition.column.Id);
                         ab.LinkCriteria.AddCondition(TestDefinition.column.Id, ConditionOperator.Equal, Test.Id);
 
-
+                        string x = "";
                         string ch = "";
                         var questions = service.RetrieveMultiple(query).Entities.ToList();
 
@@ -99,13 +98,15 @@ namespace Plugins
 
                         foreach (var q in questions)
                         {
+                            x = x+" "+q.FormattedValues[QuestionDefinition.Columns.Module] ;
+                            
                             nums.Add(q.FormattedValues[QuestionDefinition.Columns.Module]);
 
                         }
 
 
-                        var m = nums.Distinct().Select(s => Tuple.Create(s, nums.Count(s2 => s2 == s))).ToList();
-
+                        var m = nums.Distinct().Select(s => Tuple.Create(nums.Count(s2 => s2 == s), s)).ToList();
+                         
 
 
                         // var questionsDistinct = questions.GroupBy(x => x.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Module)).Select(y => y.First()).ToList();
@@ -113,10 +114,12 @@ namespace Plugins
                         foreach (var mm in m)
                         {
                             if (questions.Count() > 1)
-                                ch = ch + "  " + mm;
+                                ch = ch + " " + mm;
                             else ch = ch + mm;
 
                         }
+                        Test[TestDefinition.column.Distincte] = x;
+                        
 
                         Test[TestDefinition.column.Module] = ch;
 
@@ -170,13 +173,13 @@ namespace Plugins
                                 var niveau = Q.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Niveau_difficulte).Value;
 
                                 if (niveau == 914320000)
-                                    N = N + 10;
+                                    N = N + 30;
 
                                 else if (niveau == 914320001)
-                                    N = N + 20;
+                                    N = N + 60;
 
                                 else
-                                    N = N + 30;
+                                    N = N + 90;
 
                             }
 
@@ -226,13 +229,13 @@ namespace Plugins
                                 var niveau = Q.GetAttributeValue<OptionSetValue>(QuestionDefinition.Columns.Niveau_difficulte).Value;
 
                                 if (niveau == 914320000)
-                                    N = N + 1;
+                                    N = N + 30;
 
                                 else if (niveau == 914320001)
-                                    N = N + 2;
+                                    N = N + 60;
 
                                 else
-                                    N = N + 3;
+                                    N = N + 90;
 
                             }
 

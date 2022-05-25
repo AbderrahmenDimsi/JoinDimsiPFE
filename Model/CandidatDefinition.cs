@@ -32,7 +32,8 @@ namespace Model.Definitions
             public const string ResultatTest = "dim_resultattest";
             public const string statuscode = "statuscode ";
             public const string courrier = "dim_courrier";
-            public const string numero = "dim_numro_telephone";
+            public const string numero = "dim_num_tel";
+           
         }
 
     }
